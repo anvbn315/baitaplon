@@ -58,7 +58,7 @@ int main(){
 	List list;
 	
 	list.inputListStudent();
-	
+	cout << "testfix";
 	list.printList();
 }
 
