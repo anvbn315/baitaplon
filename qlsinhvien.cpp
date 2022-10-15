@@ -29,6 +29,7 @@ class Student{
 	private:
 		string name;
 		int age;
+		string gender;
 		Date birthDay;
 		string studentCode;
 		string studentClass;
@@ -38,6 +39,11 @@ class Student{
 	public:
 		string getName();
 		int getAge();
+		string getGender();
+		string getstudentCode();
+		string getstudentClass();
+		string getstudentSYear();
+		string getstudentTown();
 		void input();
 		void output();
 };
@@ -77,8 +83,8 @@ void List::printMenu(){
 	do{
 		cout << "\n1) Nhap sinh vien" << endl;
 		cout << "2) Xuat sinh vien" << endl;
-		cout << "3) Nhan 0 de thoat" << endl;
-		cout << "4) Tim kiem sinh vien" << endl;
+		cout << "3) Tim kiem sinh vien" << endl;
+		cout << "4) Nhan 0 de thoat" << endl;
 		cout << "Nhap lua chon: ";
 		cin >> choice;
 		switch(choice){
@@ -101,17 +107,21 @@ void List::printMenu(){
 			_getch();
 			system("cls");
 			break;
-		case 4:
+		case 3:
 			if(size==0){
 				cout << "Danh sach trong!" << endl;
 			}else{
 				short searchOption;
 				cout << "1) Tim theo ten" << endl;
 				cout << "2) Tim theo tuoi" << endl;
+				cout << "3) Tim theo gioi tinh" << endl;
+				cout << "4) Tim theo ngay sinh" << endl;
+				cout << "5) Tim theo ma so sinh vien" << endl;
+				cout << "6) Tim theo lop" << endl;
+				cout << "7) Tim theo nien khoa" << endl;
+				cout << "8) Tim theo que quan" << endl;
 				cout << "Nhap lua chon: ";
 				cin  >> searchOption;
-//				cout << "1) Tim theo gioi tinh" << endl;
-//				cout << "1) Tim theo thanh pho" << endl;
 				switch(searchOption){
 					case 1:
 						this->searchBy("name"); //name
@@ -119,6 +129,24 @@ void List::printMenu(){
 					case 2:
 						this->searchBy("age"); //age
 						break;
+					case 3:
+						this->searchBy("gender");
+						break;
+					case 4:
+						this->searchBy("brithDay");
+						break;
+					case 5:
+						this->searchBy("studentCode");
+						break;
+					case 6:
+						this->searchBy("studentClass");
+						break;
+					case 7:
+						this->searchBy("studentSYear");
+						break;
+					case 8:
+						this->searchBy("studentTown");
+						break;		
 					default:
 						cout << "Khong co lua chon nay" << endl;
 				}
@@ -178,12 +206,34 @@ int Student::getAge(){
 	return age;
 }
 
+string Student::getGender(){
+	return gender;
+}
+
+string Student::getstudentCode(){
+	return studentCode;
+}
+
+string Student::getstudentClass(){
+	return studentClass;
+}
+
+string Student::getstudentSYear(){
+	return studentSYear;
+}
+
+string Student::getstudentTown(){
+	return studentTown;
+}
+
 void Student::input(){
 	cout << "Nhap ten sinh vien: ";
 	fflush(stdin);
 	getline(cin, name);
 	cout << "Nhap tuoi sinh vien: ";
 	cin >> age;
+	cout << "Nhap gioi tinh sinh vien: ";
+	cin >> gender;
 	cout << "Nhap ngay sinh: " << endl;
 	birthDay.dateInput();
 	cout << "Nhap ma so sinh vien: ";
@@ -202,6 +252,7 @@ void Student::input(){
 void Student::output() {
 	cout << "\nTen sinh vien la: " << name << endl;
 	cout << "Tuoi sinh vien la: " << age << endl;
+	cout << "Gioi tinh sinh vien la: " << gender << endl;
 	cout << "Ngay sinh la: ";
 	birthDay.dateOutput();
 	cout << "Ma so sinh vien la: " << studentCode << endl;
@@ -252,14 +303,67 @@ void List::searchBy(string choice){
 		int tempAge;
 		cout << "Nhap tuoi can tim: ";
 		cin >> tempAge;
-		for(Node*i=head;i!=NULL;i=i->next){
-			if(i->data.getAge()==tempAge){
+			for(Node*i=head;i!=NULL;i=i->next){
+				if(i->data.getAge()==tempAge){
 				cout << "\n\r";
 				i->data.output();
+				}
 			}
-		}
 		
-	}
+		}else if(choice=="gender"){
+			char tempGender[100];
+			cout << "Nhap gioi tinh can tim: ";
+			cin >> tempGender;
+				for(Node*i=head;i!=NULL;i=i->next){
+					if(i->data.getGender()==tempGender){
+					cout << "\n\r";
+					i->data.output();
+					}
+				}
+			}
+			/*else if(choice=="brithDay"){
+				
+			}*/else if(choice=="studentCode"){
+			string tempstudentCode;
+			cout << "Nhap ma so sinh vien can tim: ";
+			cin >> tempstudentCode;
+				for(Node*i=head;i!=NULL;i=i->next){
+					if(i->data.getstudentCode()==tempstudentCode){
+					cout << "\n\r";
+					i->data.output();
+					}
+				}
+			}else if(choice=="studentClass"){
+			string tempstudentClass;
+			cout << "Nhap lop can tim: ";
+			cin >> tempstudentClass;
+				for(Node*i=head;i!=NULL;i=i->next){
+					if(i->data.getstudentClass()==tempstudentClass){
+					cout << "\n\r";
+					i->data.output();
+					}
+				}
+			}else if(choice=="studentSYear"){
+			string tempstudentSYear;
+			cout << "Nhap lop can tim: ";
+			cin >> tempstudentSYear;
+				for(Node*i=head;i!=NULL;i=i->next){
+					if(i->data.getstudentSYear()==tempstudentSYear){
+					cout << "\n\r";
+					i->data.output();
+					}
+				}
+			}else if(choice=="studentTown"){
+			string tempstudentTown;
+			cout << "Nhap que quan can tim: ";
+			cin >> tempstudentTown;
+				for(Node*i=head;i!=NULL;i=i->next){
+					if(i->data.getstudentTown()==tempstudentTown){
+					cout << "\n\r";
+					i->data.output();
+					}
+				}
+			}
 }
 
 void List::inputListStudent(){
