@@ -197,6 +197,25 @@ void Address::addressInput(){
 void Address::addressOutput(){
 	cout << homeNum << ", duong" << streetName << ", phuong " << ward << ", quan " << district << ", thanh pho " << city << endl;
 }
+/*void gender::GenderInput(){
+	string select;
+	do{
+		cout << "1) Nam " << endl;
+		cout << "2) Nu " << endl;
+		cin >> select;
+		switch(select){
+			case 1: "Nam";
+			break;
+			case 2: "Nu";
+			break;
+			default:
+				cout << "Khong co lua chon nay" << endl;
+		}
+		
+	}
+}*/
+	
+	
 
 string Student::getName(){
 	return name;
@@ -300,69 +319,90 @@ void List::searchBy(string choice){
 			}
 		}
 	}else if(choice=="age"){
-		int tempAge;
-		cout << "Nhap tuoi can tim: ";
-		cin >> tempAge;
-			for(Node*i=head;i!=NULL;i=i->next){
-				if(i->data.getAge()==tempAge){
-				cout << "\n\r";
-				i->data.output();
-				}
-			}
-		
-		}else if(choice=="gender"){
-			char tempGender[100];
-			cout << "Nhap gioi tinh can tim: ";
-			cin >> tempGender;
+				int tempAge;
+				cout << "Nhap tuoi can tim: ";
+				cin >> tempAge;
+				
 				for(Node*i=head;i!=NULL;i=i->next){
-					if(i->data.getGender()==tempGender){
-					cout << "\n\r";
-					i->data.output();
+					if(i->data.getAge()==tempAge){
+						cout << "\n\r";
+						i->data.output();
 					}
 				}
-			}
-			/*else if(choice=="brithDay"){
+		
+	}else if(choice=="gender"){
+				char tempGender[100];
+				cout << "Nhap gioi tinh can tim: ";
+				fflush(stdin);
+				gets(tempGender);
+		
+				for(Node* i=head;i!=NULL;i=i->next){	
+					int n = (i->data.getGender()).length();
+					char myarray[n + 1];
+					strcpy(myarray, i->data.getGender().c_str());
+					if(strstr(strupr(myarray), strupr(tempGender)) != NULL){
+						cout << "\n\r";
+						i->data.output();
+					}	
+				}		
+	}
+	/*else if(choice=="brithDay"){
 				
 			}*/else if(choice=="studentCode"){
-			string tempstudentCode;
-			cout << "Nhap ma so sinh vien can tim: ";
-			cin >> tempstudentCode;
-				for(Node*i=head;i!=NULL;i=i->next){
-					if(i->data.getstudentCode()==tempstudentCode){
+							char tempStudentCode[100];
+							cout << "Nhap ma so sinh vien can tim: ";
+							fflush(stdin);
+							gets(tempStudentCode);
+		
+							for(Node* i=head;i!=NULL;i=i->next){	
+								int n = (i->data.getstudentCode()).length();
+								char myarray[n + 1];
+								strcpy(myarray, i->data.getstudentClass().c_str());
+								if(strstr(strupr(myarray), strupr(tempStudentCode)) != NULL){
+									cout << "\n\r";
+									i->data.output();
+								}	
+							}		
+	}else if(choice=="studentClass"){
+				char tempStudentClass[100];
+				cout << "Nhap lop can tim: ";
+				fflush(stdin);
+				gets(tempStudentClass);
+		
+				for(Node* i=head;i!=NULL;i=i->next){	
+				int n = (i->data.getstudentClass()).length();
+				char myarray[n + 1];
+				strcpy(myarray, i->data.getstudentClass().c_str());
+				if(strstr(strupr(myarray), strupr(tempStudentClass)) != NULL){
 					cout << "\n\r";
 					i->data.output();
-					}
 				}
-			}else if(choice=="studentClass"){
-			string tempstudentClass;
-			cout << "Nhap lop can tim: ";
-			cin >> tempstudentClass;
+			}
+	}else if(choice=="studentSYear"){
+				string tempStudentSYear;
+				cout << "Nhap nien khoa can tim: ";
+				cin >> tempStudentSYear;
 				for(Node*i=head;i!=NULL;i=i->next){
-					if(i->data.getstudentClass()==tempstudentClass){
-					cout << "\n\r";
-					i->data.output();
-					}
-				}
-			}else if(choice=="studentSYear"){
-			string tempstudentSYear;
-			cout << "Nhap lop can tim: ";
-			cin >> tempstudentSYear;
-				for(Node*i=head;i!=NULL;i=i->next){
-					if(i->data.getstudentSYear()==tempstudentSYear){
+					if(i->data.getstudentSYear()==tempStudentSYear){
 					cout << "\n\r";
 					i->data.output();
 					}
 				}
 			}else if(choice=="studentTown"){
-			string tempstudentTown;
-			cout << "Nhap que quan can tim: ";
-			cin >> tempstudentTown;
-				for(Node*i=head;i!=NULL;i=i->next){
-					if(i->data.getstudentTown()==tempstudentTown){
-					cout << "\n\r";
-					i->data.output();
-					}
-				}
+						char tempStudentTown[100];
+						cout << "Nhap que quan can tim: ";
+						fflush(stdin);
+						gets(tempStudentTown);
+		
+						for(Node* i=head;i!=NULL;i=i->next){	
+						int n = (i->data.getstudentTown()).length();
+						char myarray[n + 1];
+						strcpy(myarray, i->data.getstudentTown().c_str());
+							if(strstr(strupr(myarray), strupr(tempStudentTown)) != NULL){
+							cout << "\n\r";
+							i->data.output();
+							}		
+						}
 			}
 }
 
