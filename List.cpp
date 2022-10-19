@@ -366,8 +366,15 @@ void List::searchBy(string choice)
 	{
 		bool isFound = false;
 		Date tempBirthDay;
-		cout << "Nhap ngay/ thang/ nam can tim: ";
-		tempBirthDay.dateInput();
+		do{
+			cout << "Nhap ngay/ thang/ nam can tim: ";
+			tempBirthDay.dateInput();
+			if(tempBirthDay.checkDate() == false){
+				cout << "Ngay khong hop le!" << endl;
+			}
+		}while(tempBirthDay.checkDate() == false);
+		
+	
 		for (Node *i = head; i != NULL; i = i->next)
 		{
 			if (i->data.getBirthDay().compareDate(tempBirthDay) == true){

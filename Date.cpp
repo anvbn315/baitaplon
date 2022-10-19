@@ -61,7 +61,7 @@ bool Date::checkDate() {
 			}
 		case 2:
 			if(checkLeapYear() == true){
-				if(day < 0 || day > 29){
+				if(day < 0 || day > 29){  //nam khong nhuan 2022, nam nhuan 2024 (test)
 					return false;
 				}
 			}else{
