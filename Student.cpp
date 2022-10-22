@@ -1,5 +1,6 @@
 #pragma once
 #include"Student.h"
+#include<ctime>
 
 string Student::getName()
 {
@@ -46,14 +47,54 @@ Address Student::getAdress()
 	return address;
 }
 
+void Student::setName(string IPname){
+	name = IPname;
+}
+
+void Student::setAge(int IPage){
+	age = IPage;
+}
+
+void Student::setGender(string IPgender){
+	gender = IPgender;
+}
+
+void Student::setBirthDay(Date IPbirthDay){
+	birthDay.day = IPbirthDay.day;
+	birthDay.month = IPbirthDay.month;
+	birthDay.year = IPbirthDay.year;
+}
+
+void Student::setStudentCode(string IPstudentCode){
+	studentCode = IPstudentCode;
+}
+
+void Student::setStudentClass(string IPstudentClass){
+	studentClass = IPstudentClass;
+}
+
+void Student::setStudentSYear(string IPstudentSYear){
+	studentSYear = IPstudentSYear;
+}
+
+void Student::setStudentTown(string IPstudentTown){
+	studentTown = IPstudentTown;
+}
+
+void Student::setAddress(Address IPaddress){
+	address.homeNum = IPaddress.homeNum;
+	address.streetName = IPaddress.streetName;
+	address.ward = IPaddress.ward;
+	address.district = IPaddress.district;
+	address.city = IPaddress.city;	
+}
+
 void Student::input()
 {
 	int genderTemp;
 	cout << "Nhap ten sinh vien: ";
 	fflush(stdin);
 	getline(cin, name);
-	cout << "Nhap tuoi sinh vien: ";
-	cin >> age;
 
 	do {
 		cout << "Nhap gioi tinh sinh vien: " << endl;
@@ -94,6 +135,7 @@ void Student::input()
 	getline(cin, studentTown);
 	cout << "Nhap dia chi thuong tru: ";
 	address.addressInput();
+	countAge();
 }
 
 void Student::output()
@@ -109,4 +151,13 @@ void Student::output()
 	cout << "Que quan sinh vien la: " << studentTown << endl;
 	cout << "Dia chi sinh vien la: ";
 	address.addressOutput();
+}
+
+void Student::countAge(){
+	int bornYear = birthDay.year;
+	time_t Time = time(0);
+	tm* Now = localtime(&Time);
+	int	currentYear = Now->tm_year + 1900;
+	
+	age = currentYear - bornYear;
 }

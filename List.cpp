@@ -4,19 +4,21 @@
 #include <cstring>
 #include <conio.h>
 #include<iostream>
+#include <fstream>
 
 void List::printMenu()
 {
 	int choice;
 	do {
 		cout << "         --QUAN LI SINH VIEN--       " << endl;
-		cout << "=====================================" << endl;
-		cout << "| 0)      Nhan 0 de thoat           |" << endl;
-		cout << "| 1)      Nhap sinh vien            |" << endl;
-		cout << "| 2)      Xuat sinh vien            |" << endl;
-		cout << "| 3)      Tim kiem sinh vien        |" << endl;
-		cout << "| 4)      Xoa sinh vien             |" << endl;
-		cout << "=====================================" << endl;
+		cout << "=================================================" << endl;
+		cout << "| 0)          Nhan 0 de thoat                   |" << endl;
+		cout << "| 1)          Nhap sinh vien                    |" << endl;
+		cout << "| 2)          Xuat sinh vien                    |" << endl;
+		cout << "| 3)          Tim kiem sinh vien                |" << endl;
+		cout << "| 4)          Xoa sinh vien                     |" << endl;
+		cout << "| 5)          Chinh sua thong tin sinh vien     |" << endl;
+		cout << "=================================================" << endl;
 		cout << "Nhap lua chon: ";
 		cin >> choice;
 		switch (choice)
@@ -113,10 +115,23 @@ void List::printMenu()
 				cout << "\nNhan phim bat ky de tiep tuc" << endl;
 				_getch();
 				system("cls");
-				break;	
+				break;
+			case 5:
+				if(size == 0){
+					cout << "\nDanh sach trong!" << endl;
+				}else{
+					string code;
+					cout << "Cap nhap thong tin sinh vien!" << endl;
+					cout << "Nhap ma so sinh vien: " << endl;
+					cin >> code;
+					this->updateByStudentCode(code);
+				}	
+				_getch();
+				system("cls");
+				break;
 			default:
-				cout << "\nKhong co lua chon nay" << endl;
-				cout << "\nNhan phim bat ky de tiep tuc" << endl;
+				cout << "\nKhong co lua chon nay!" << endl;
+				cout << "\nNhan phim bat ky de tiep tuc!" << endl;
 				_getch();
 				system("cls");
 		}
@@ -137,6 +152,22 @@ Node *List::createNode(Student data)
 	return p;
 }
 
+void List::updateByStudentCode(string code){
+	bool isFound = false;
+	
+	for(Node *i=head;i!=NULL;i=i->next){
+		if(i->data.getstudentCode() == code){
+			isFound = true;
+			cout << "\n\r";
+			i->data.input();
+		}
+	}
+	
+	if(!isFound){
+		cout << "Khong tim thay sinh vien!" << endl;
+	}
+}
+
 void List::deleteByStudentCode(string code)
 {
 	for(Node *i=head;i!=NULL;i=i->next){
@@ -145,7 +176,8 @@ void List::deleteByStudentCode(string code)
 				Node *currentNode = head;
 				head = head->next;
 				delete currentNode;
-				size--;	
+				size--;
+				cout << "Da xoa thanh cong!" << endl;
 			}else{
 				for(Node *i = head;i != NULL;i = i->next){
 					if(i->next->data.getstudentCode() == code){
@@ -153,6 +185,7 @@ void List::deleteByStudentCode(string code)
 						i->next = i->next->next;
 						delete nodeToDelete;
 						size--;
+						cout << "Da xoa thanh cong!" << endl;
 					}
 				}
 			}
@@ -425,14 +458,61 @@ void List::inputListStudent()
 	}
 }
 
-void List::updateByStudentCode(string code){
-	
-}
-
 void List::printList()
 {
 	for (Node *i = head; i != NULL; i = i->next)
 	{
 		i->data.output();
 	}
+}
+
+void List::inputFile() {
+	ifstream infile;
+	infile.open(FILE_PATH);
+	
+	Date tempBirthDay;
+	string tempName;
+	string tempGender;
+	string tempStudentCode;
+	string tempStudentClass;
+	string tempStudentSYear;
+	string tempStudentTown;
+	Address tempAddress;
+	Student temp;
+	
+	
+	if(infile.is_open() == false){
+		cout << "File khong ton tai!" << endl;
+	}
+	while(infile >> tempBirthDay.day){
+		infile >> tempBirthDay.month;
+		infile >> tempBirthDay.year;
+		infile.ignore();
+		getline(infile, tempName);
+		infile >> tempGender;
+		infile >> tempStudentCode;
+		infile >> tempStudentClass;
+		infile >> tempStudentSYear;
+		infile >> tempStudentTown;
+		infile.ignore();
+		getline(infile, tempAddress.homeNum);
+		getline(infile, tempAddress.streetName);
+		getline(infile, tempAddress.ward);
+		getline(infile, tempAddress.district);
+		getline(infile, tempAddress.city);
+		
+		temp.setName(tempName);
+		temp.setBirthDay(tempBirthDay);
+		temp.setAddress(tempAddress);
+		temp.setGender(tempGender);
+		temp.setStudentClass(tempStudentClass);
+		temp.setStudentCode(tempStudentCode);
+		temp.setStudentSYear(tempStudentSYear);
+		temp.setStudentTown(tempStudentTown);
+		temp.countAge();
+		
+		this->addLast(temp);
+	
+	}
+		infile.close();	
 }

@@ -1,6 +1,8 @@
 #pragma once
 #include"Student.h"
 
+#define FILE_PATH "C:/tF/QuanLiSinhVien.txt"
+
 struct Node
 {
 	Student data;
@@ -23,4 +25,5 @@ class List
 	void printMenu();
 	void deleteByStudentCode(string code); 
 	void updateByStudentCode(string code);
+	void inputFile();
 };
