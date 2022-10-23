@@ -1,7 +1,7 @@
 #pragma once
 #include"Student.h"
 
-#define FILE_PATH "C:/tF/QuanLiSinhVien.txt"
+#define FILE_PATH "C:/Duonghieu/QuanLiSinhVien.txt"
 
 struct Node
 {
@@ -26,4 +26,5 @@ class List
 	void deleteByStudentCode(string code); 
 	void updateByStudentCode(string code);
 	void inputFile();
+	void outputFile();
 };
