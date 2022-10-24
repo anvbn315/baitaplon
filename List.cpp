@@ -18,6 +18,7 @@ void List::printMenu()
 		cout << "| 3)          Tim kiem sinh vien                |" << endl;
 		cout << "| 4)          Xoa sinh vien                     |" << endl;
 		cout << "| 5)          Chinh sua thong tin sinh vien     |" << endl;
+		cout << "| 6)          Xuat thong tin ra file            |" << endl;
 		cout << "=================================================" << endl;
 		cout << "Nhap lua chon: ";
 		cin >> choice;
@@ -126,6 +127,17 @@ void List::printMenu()
 					cin >> code;
 					this->updateByStudentCode(code);
 				}	
+				cout << "\nNhan phim bat ky de tiep tuc" << endl;
+				_getch();
+				system("cls");
+				break;
+			case 6:
+				if(size == 0){
+					cout << "\nDanh sach trong!" << endl;
+				}else{
+					this->outputFile();
+				}	
+				cout << "\nNhan phim bat ky de tiep tuc" << endl;
 				_getch();
 				system("cls");
 				break;
@@ -480,10 +492,10 @@ void List::inputFile() {
 	Address tempAddress;
 	Student temp;
 	
-	
 	if(infile.is_open() == false){
 		cout << "File khong ton tai!" << endl;
 	}
+	
 	while(infile >> tempBirthDay.day){
 		infile >> tempBirthDay.month;
 		infile >> tempBirthDay.year;
@@ -515,4 +527,32 @@ void List::inputFile() {
 	
 	}
 		infile.close();	
+}
+
+void List::outputFile(){
+	ofstream outFile;
+	outFile.open(FILE_PATH);
+	
+	if(outFile.is_open() == false){
+		cout << "File khong ton tai!" << endl;
+	}	
+	
+	for(Node *i = head;i != NULL;i=i->next){
+		outFile << i->data.getBirthDay().day << endl;
+		outFile << i->data.getBirthDay().month << endl;
+		outFile << i->data.getBirthDay().year << endl;
+		outFile << i->data.getName() << endl;
+		outFile << i->data.getGender() << endl;
+		outFile << i->data.getstudentCode() << endl;
+		outFile << i->data.getstudentClass() << endl;
+		outFile << i->data.getstudentSYear() << endl;
+		outFile << i->data.getstudentTown() << endl;
+		outFile << i->data.getAdress().homeNum << endl;
+		outFile << i->data.getAdress().streetName << endl;
+		outFile << i->data.getAdress().ward << endl;
+		outFile << i->data.getAdress().district << endl;
+		outFile << i->data.getAdress().city << endl;
+	}
+	
+	outFile.close();
 }
