@@ -5,12 +5,14 @@
 #include <conio.h>
 #include<iostream>
 #include <fstream>
+#include"Helpers.h"
+#include <stdlib.h>
 
 void List::printMenu()
 {
 	int choice;
 	do {
-		cout << "         --QUAN LI SINH VIEN--       " << endl;
+		cout << "                ~QUAN LI SINH VIEN~              " << endl;
 		cout << "=================================================" << endl;
 		cout << "| 0)          Nhan 0 de thoat                   |" << endl;
 		cout << "| 1)          Nhap sinh vien                    |" << endl;
@@ -54,8 +56,8 @@ void List::printMenu()
 				}
 				else
 				{
-					short searchOption;
-					cout << "1) Tim theo ten" << endl;
+					string searchOption;
+					cout << "\n1) Tim theo ten" << endl;
 					cout << "2) Tim theo tuoi" << endl;
 					cout << "3) Tim theo gioi tinh" << endl;
 					cout << "4) Tim theo ngay thang nam sinh" << endl;
@@ -64,9 +66,16 @@ void List::printMenu()
 					cout << "7) Tim theo nien khoa" << endl;
 					cout << "8) Tim theo que quan" << endl;
 					cout << "9) Tim theo dia chi thuong tru" << endl;
+				do{	
+					
 					cout << "Nhap lua chon: ";
 					cin >> searchOption;
-					switch (searchOption)
+	if(checkInput(searchOption) == false){
+		cout << "Lua chon khong hop le!" << endl;
+	}
+		}while(checkInput(searchOption) == false);
+						
+					switch (atoi(searchOption.c_str()))
 					{
 						case 1:
 							this->searchBy("name");	//name
@@ -181,9 +190,10 @@ void List::updateByStudentCode(string code){
 }
 
 void List::deleteByStudentCode(string code)
-{
+{	bool isFound = false;
 	for(Node *i=head;i!=NULL;i=i->next){
 		if(i->data.getstudentCode() == code){
+			isFound = true;
 			if(i == head){
 				Node *currentNode = head;
 				head = head->next;
@@ -202,6 +212,9 @@ void List::deleteByStudentCode(string code)
 				}
 			}
 		}
+	}
+	if(isFound == false){
+		cout << "Khong tim thay sinh vien voi ma so la: " << code << endl;
 	}
 } 
 
@@ -458,16 +471,20 @@ void List::searchBy(string choice)
 
 void List::inputListStudent()
 {
-	int amount;
+	string amount;
+	do{
+	
 	cout << "Nhap so luong sinh vien muon them: ";
 	cin >> amount;
-
-	for (int i = 0; i < amount; i++)
-	{
-		Student temp;
-		temp.input();
-		addLast(temp);
+	if(checkInput(amount) == false){
+		cout << "So luong khong hop le!" << endl;
 	}
+	}while(checkInput(amount) == false);
+		for (int i = 0; i < atoi(amount.c_str()); i++){
+				Student temp;
+					temp.input();
+						addLast(temp);	
+			}
 }
 
 void List::printList()
@@ -556,3 +573,4 @@ void List::outputFile(){
 	
 	outFile.close();
 }
+

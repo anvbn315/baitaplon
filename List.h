@@ -1,7 +1,7 @@
 #pragma once
 #include"Student.h"
 
-#define FILE_PATH "C:/Duonghieu/QuanLiSinhVien.txt"
+#define FILE_PATH "C:/tF/QuanLiSinhVien.txt"
 
 struct Node
 {
