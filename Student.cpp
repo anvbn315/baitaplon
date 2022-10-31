@@ -1,7 +1,12 @@
 #pragma once
 #include"Student.h"
 #include<ctime>
+#include"Point.h"
 
+Point Student::getPoint()
+{
+	return point;
+}
 string Student::getName()
 {
 	return name;
@@ -42,7 +47,7 @@ Date Student::getBirthDay()
 	return birthDay;
 }
 
-Address Student::getAdress()
+Address Student::getAddress()
 {
 	return address;
 }
@@ -136,6 +141,9 @@ void Student::input()
 	cout << "Nhap dia chi thuong tru: ";
 	address.addressInput();
 	countAge();
+	cout<< "Nhap diem sinh vien: " <<endl;
+	point.inputPoint();
+	
 }
 
 void Student::output()
@@ -151,6 +159,7 @@ void Student::output()
 	cout << "Que quan sinh vien la: " << studentTown << endl;
 	cout << "Dia chi sinh vien la: ";
 	address.addressOutput();
+	point.outputPoint();
 }
 
 void Student::countAge(){

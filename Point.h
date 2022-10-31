@@ -18,5 +18,14 @@ class Point{
 	void pointEvaluation(); //danh gia diem tren thang 4 
 	void componentScoring(); //tinh diem thanh phan
 	void eOtCourseScoring(); // tinh diem ket thuc hoc phan
+	
+	float getFirstExam();
+	float getSecondExam();
+	float getFinalExam();
+	float getComponent();
+	float getAttendance();
+	float getEoTCourse();
+	
 };
+
 

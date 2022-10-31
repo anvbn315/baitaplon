@@ -7,6 +7,7 @@
 #include <fstream>
 #include"Helpers.h"
 #include <stdlib.h>
+#include"Point.h"
 
 void List::printMenu()
 {
@@ -66,6 +67,7 @@ void List::printMenu()
 					cout << "7) Tim theo nien khoa" << endl;
 					cout << "8) Tim theo que quan" << endl;
 					cout << "9) Tim theo dia chi thuong tru" << endl;
+					cout << "10)Tim theo xep loai hoc luc" << endl;
 				do{	
 					
 					cout << "Nhap lua chon: ";
@@ -103,6 +105,9 @@ void List::printMenu()
 							break;
 						case 9:
 							this->searchBy("address");
+							break;
+						case 10:
+							this->searchBy("grade");
 							break;
 						default:
 							cout << "Khong co lua chon nay" << endl;
@@ -162,6 +167,7 @@ void List::printMenu()
 
 List::List()
 {
+	size=0;
 	head = tail = NULL;
 }
 
@@ -455,7 +461,7 @@ void List::searchBy(string choice)
 		tempAddress.addressInput();
 		for (Node *i = head; i != NULL; i = i->next)
 		{
-			if (i->data.getAdress().compareAddress(tempAddress) == true){
+			if (i->data.getAddress().compareAddress(tempAddress) == true){
 				cout << "\n\r";
 				isFound = true;
 				i->data.output();
@@ -466,6 +472,54 @@ void List::searchBy(string choice)
 		{
 			cout << "\nKhong tim thay!";
 		}
+	}
+	else if (choice == "grade")
+	{
+		int gradechoice;
+		cout <<"1)Tim sinh vien hoc luc A" <<endl;
+		cout <<"2)Tim sinh vien hoc luc B" <<endl;
+		cout <<"3)Tim sinh vien hoc luc C" <<endl;
+		cout <<"4)Tim sinh vien hoc luc D" <<endl;
+		cout <<"5)Tim sinh vien hoc luc F" <<endl;
+		cout <<"Nhap lua chon: ";
+		cin>>gradechoice;
+		switch (gradechoice){
+			case 1:
+				for(Node*i=head;i != NULL; i = i->next){
+					if(i->data.getPoint().getEoTCourse() >=8.5 && i->data.getPoint().getEoTCourse()<=10){
+					i->data.output();
+					}						
+				}
+				break;
+			case 2:
+				for(Node*i=head;i != NULL; i = i->next){
+					if(i->data.getPoint().getEoTCourse() >=7 && i->data.getPoint().getEoTCourse()<=8.4){
+					i->data.output();
+					}						
+				}
+				break;	
+			case 3:
+				for(Node*i=head;i != NULL; i = i->next){
+					if(i->data.getPoint().getEoTCourse() >=5.5 && i->data.getPoint().getEoTCourse()<=6.9){
+					i->data.output();
+					}						
+				}
+				break;
+			case 4:
+				for(Node*i=head;i != NULL; i = i->next){
+					if(i->data.getPoint().getEoTCourse() >=4 && i->data.getPoint().getEoTCourse()<=6.4){
+					i->data.output();
+					}						
+				}
+				break;
+			case 5:
+				for(Node*i=head;i != NULL; i = i->next){
+					if(i->data.getPoint().getEoTCourse()<=4){
+					i->data.output();
+					}						
+				}
+				break;			
+		}	
 	}
 }
 
@@ -564,11 +618,11 @@ void List::outputFile(){
 		outFile << i->data.getstudentClass() << endl;
 		outFile << i->data.getstudentSYear() << endl;
 		outFile << i->data.getstudentTown() << endl;
-		outFile << i->data.getAdress().homeNum << endl;
-		outFile << i->data.getAdress().streetName << endl;
-		outFile << i->data.getAdress().ward << endl;
-		outFile << i->data.getAdress().district << endl;
-		outFile << i->data.getAdress().city << endl;
+		outFile << i->data.getAddress().homeNum << endl;
+		outFile << i->data.getAddress().streetName << endl;
+		outFile << i->data.getAddress().ward << endl;
+		outFile << i->data.getAddress().district << endl;
+		outFile << i->data.getAddress().city << endl;
 	}
 	
 	outFile.close();

@@ -1,7 +1,7 @@
 #pragma once
 #include"Date.h"
 #include"Address.h"
-
+#include"Point.h"
 class Student
 {
 	private:
@@ -14,17 +14,19 @@ class Student
 	string studentSYear;
 	string studentTown;
 	Address address;
+	Point point;
 	public:
 	// getter
 		string getName();
 	int getAge();
 	Date getBirthDay();
-	Address getAdress();
+	Address getAddress();
 	string getGender();
 	string getstudentCode();
 	string getstudentClass();
 	string getstudentSYear();
 	string getstudentTown();
+	Point  getPoint();
 	//setter
 	void setName(string IPname);
 	void setAge(int IPage);
