@@ -37,7 +37,8 @@ class Student
 	void setStudentSYear(string IPstudentSYear);
 	void setStudentTown(string IPstudentTown);
 	void setAddress(Address IPaddress);
-	
+	void setPoint(Point IPpoint);
+	Student operator =(Student b);
 	void input();
 	void output();
 	void countAge();

@@ -49,6 +49,7 @@ bool Date::checkDate() {
 			if(day < 0 || day > 30){
 				return false;
 			}
+			return true;
 		case 1:
 		case 3:
 		case 5:
@@ -59,6 +60,7 @@ bool Date::checkDate() {
 			if(day < 0 || day > 31){
 				return false;
 			}
+			return true;
 		case 2:
 			if(checkLeapYear() == true){
 				if(day < 0 || day > 29){  //nam khong nhuan 2022, nam nhuan 2024 (test)
@@ -69,6 +71,7 @@ bool Date::checkDate() {
 					return false;
 				}
 			}
+			return true;
 	}
 	return true;
 }

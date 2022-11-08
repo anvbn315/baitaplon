@@ -28,6 +28,30 @@ float Point::getEoTCourse(){
 	return eOtCourse;
 }
 
+void Point::setFirstExam(float point) {
+	this->firstExam = point;
+}
+
+void Point::setSecondExam(float point) {
+	this->secondExam = point;
+}
+
+void Point::setFinalExam(float point) {
+	this->finalExam = point;
+}
+
+void Point::setAttendance(float point) {
+	this->attendance = point;
+}
+
+void Point::setComponent(float point) {
+	this->component = point;
+}
+
+void Point::setEoTCourse(float point) {
+	this->eOtCourse = point;
+}
+
 void Point::inputPoint(){
 	cout << "Mon hoc: Cau truc du lieu va giai thuat" << endl;
 	cout << "Nhap diem bai kiem tra so 1: " << endl;

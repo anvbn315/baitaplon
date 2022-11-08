@@ -146,11 +146,7 @@ void List::printMenu()
 				system("cls");
 				break;
 			case 6:
-				if(size == 0){
-					cout << "\nDanh sach trong!" << endl;
-				}else{
-					this->outputFile();
-				}	
+				this->outputFile();	
 				cout << "\nNhan phim bat ky de tiep tuc" << endl;
 				_getch();
 				system("cls");
@@ -222,6 +218,28 @@ void List::deleteByStudentCode(string code)
 	if(isFound == false){
 		cout << "Khong tim thay sinh vien voi ma so la: " << code << endl;
 	}
+}
+
+void List::sortByStudentPoint(){
+    Node* temp = head;
+
+    while (temp) {
+        Node* min = temp;
+        Node* r = temp->next;
+
+        while (r) {
+            if (min->data.getPoint().getEoTCourse() > r->data.getPoint().getEoTCourse()){
+            	 min = r;
+			}
+               
+            r = r->next;
+        }
+  
+        Student x = temp->data;
+        temp->data = min->data;
+        min->data = x;
+        temp = temp->next;
+    }
 } 
 
 void List::addLast(Student data)
@@ -543,6 +561,7 @@ void List::inputListStudent()
 
 void List::printList()
 {
+	this->sortByStudentPoint();
 	for (Node *i = head; i != NULL; i = i->next)
 	{
 		i->data.output();
@@ -562,7 +581,11 @@ void List::inputFile() {
 	string tempStudentTown;
 	Address tempAddress;
 	Student temp;
-	
+	Point tempPoint;
+	float tempFristExamP;
+	float tempSecondExamP;
+	float tempFinalExamP;
+	float tempAttendanceP;
 	if(infile.is_open() == false){
 		cout << "File khong ton tai!" << endl;
 	}
@@ -583,6 +606,15 @@ void List::inputFile() {
 		getline(infile, tempAddress.ward);
 		getline(infile, tempAddress.district);
 		getline(infile, tempAddress.city);
+		infile >> tempFristExamP;
+		infile >> tempSecondExamP;
+		infile >> tempFinalExamP;
+		infile >> tempAttendanceP;
+		
+		tempPoint.setFirstExam(tempFristExamP);
+		tempPoint.setSecondExam(tempSecondExamP);
+		tempPoint.setFinalExam(tempFinalExamP);
+		tempPoint.setAttendance(tempAttendanceP);
 		
 		temp.setName(tempName);
 		temp.setBirthDay(tempBirthDay);
@@ -593,6 +625,8 @@ void List::inputFile() {
 		temp.setStudentSYear(tempStudentSYear);
 		temp.setStudentTown(tempStudentTown);
 		temp.countAge();
+	
+		temp.setPoint(tempPoint);
 		
 		this->addLast(temp);
 	
@@ -623,6 +657,11 @@ void List::outputFile(){
 		outFile << i->data.getAddress().ward << endl;
 		outFile << i->data.getAddress().district << endl;
 		outFile << i->data.getAddress().city << endl;
+		
+		outFile << i->data.getPoint().getFirstExam() << endl;
+		outFile << i->data.getPoint().getSecondExam() << endl;
+		outFile << i->data.getPoint().getFinalExam() << endl;
+		outFile << i->data.getPoint().getAttendance() << endl;
 	}
 	
 	outFile.close();

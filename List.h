@@ -27,4 +27,5 @@ class List
 	void updateByStudentCode(string code);
 	void inputFile();
 	void outputFile();
+	void sortByStudentPoint();
 };

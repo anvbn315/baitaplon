@@ -70,6 +70,15 @@ void Student::setBirthDay(Date IPbirthDay){
 	birthDay.year = IPbirthDay.year;
 }
 
+void Student::setPoint(Point IPpoint){
+	point.setFirstExam(IPpoint.getFirstExam());
+	point.setSecondExam(IPpoint.getSecondExam());
+	point.setFinalExam(IPpoint.getFinalExam());
+	point.setAttendance(IPpoint.getAttendance());
+	point.componentScoring();
+	point.eOtCourseScoring();
+}
+
 void Student::setStudentCode(string IPstudentCode){
 	studentCode = IPstudentCode;
 }
@@ -86,12 +95,46 @@ void Student::setStudentTown(string IPstudentTown){
 	studentTown = IPstudentTown;
 }
 
+
+
 void Student::setAddress(Address IPaddress){
 	address.homeNum = IPaddress.homeNum;
 	address.streetName = IPaddress.streetName;
 	address.ward = IPaddress.ward;
 	address.district = IPaddress.district;
 	address.city = IPaddress.city;	
+}
+
+//**************************************
+Student Student::operator =(Student b){
+	this->address.city = b.address.city;
+	this->address.district = b.address.district;
+	this->address.homeNum = b.address.homeNum;
+	this->address.streetName = b.address.streetName;
+	this->address.ward = b.address.ward;
+	
+	this->age = b.age;
+	
+	this->birthDay.day = b.birthDay.day;
+	this->birthDay.month = b.birthDay.month;
+	this->birthDay.year = b.birthDay.year;
+	
+	this->gender = b.gender;
+	
+	this->name = b.name;
+	this->studentCode = b.studentCode;
+	this->studentClass = b.studentClass;
+	this->studentSYear = b.studentSYear;
+	this->studentTown = b.studentTown;
+	
+	this->point.setAttendance(b.point.getAttendance());
+	this->point.setComponent(b.point.getComponent());
+	this->point.setFirstExam(b.point.getFirstExam());
+	this->point.setSecondExam(b.point.getSecondExam());
+	this->point.setFinalExam(b.point.getFinalExam());
+	this->point.setEoTCourse(b.point.getEoTCourse());
+	
+	return *this;
 }
 
 void Student::input()
