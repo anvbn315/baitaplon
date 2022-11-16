@@ -1,5 +1,6 @@
 #pragma once
 #include"Address.h"
+#include<iomanip>
 
 void Address::addressInput()
 {
@@ -21,7 +22,7 @@ void Address::addressInput()
 
 void Address::addressOutput()
 {
-	cout << homeNum << ", duong " << streetName << ", phuong " << ward << ", quan " << district << ", thanh pho " << city << endl;
+	cout <<  setw(50) << left << homeNum + ",duong:" + streetName + ",phuong:" + ward + ",quan:" + district + ",TP." + city << "|" <<endl;
 }
 
 bool Address::compareAddress(Address address2){

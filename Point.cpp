@@ -2,6 +2,8 @@
 #include <cmath>
 #include "Point.h"
 #include<iostream>
+#include<iomanip>
+
 using namespace std;
 
 float Point::getFirstExam(){
@@ -67,12 +69,12 @@ void Point::inputPoint(){
 }
 
 void Point::outputPoint(){
-	cout << "Mon hoc: Cau truc-du lieu va giai thuat" << endl;
-	cout << "Diem bai kiem tra so 1 la: " << firstExam << endl;
-	cout << "Diem bai kiem tra so 2 la: " << secondExam << endl;
-	cout << "Diem bai kiem tra cuoi ky la: " << finalExam << endl;
-	cout << "Diem chuyen can la: " << firstExam << endl;
 	pointEvaluation();
+	cout<< setw(15)  << firstExam << "|"
+	<< setw(15)  << secondExam << "|"
+	<< setw(15)  << finalExam << "|"
+	<< setw(15)  << attendance << "|" 
+	<< setw(10) << rank << "|" <<  endl;
 		
 }
 
@@ -86,15 +88,14 @@ void Point::eOtCourseScoring(){
 
 void Point::pointEvaluation(){
 	if(eOtCourse >=8.5 && eOtCourse <=10 ){
-		cout << "Hoc luc: Gioi - A" << endl;
+		rank="Gioi-A";
 	}else if (eOtCourse >=7 && eOtCourse <=8.4){
-		cout << "Hoc luc: Kha - B" << endl;
+		rank="Kha-B";
 	}else if (eOtCourse >=5.5 && eOtCourse <=6.9){
-		cout << "Hoc luc: Trung binh - C" << endl;
+		rank="Trung binh-C";
 	}else if (eOtCourse >=4 && eOtCourse <=5.4){
-		cout << "Hoc luc: Yeu - D" << endl;
+		rank="Yeu-D";
 	}else if (eOtCourse <4){
-		cout << "Hoc luc: Kem - F" << endl;
-		cout << "Canh bao: Mon hoc khong dat!" << endl;
+		rank="Kem-F";
 }
 }

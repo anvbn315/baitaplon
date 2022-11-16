@@ -8,6 +8,7 @@
 #include"Helpers.h"
 #include <stdlib.h>
 #include"Point.h"
+#include<iomanip>
 
 void List::printMenu()
 {
@@ -22,6 +23,7 @@ void List::printMenu()
 		cout << "| 4)          Xoa sinh vien                     |" << endl;
 		cout << "| 5)          Chinh sua thong tin sinh vien     |" << endl;
 		cout << "| 6)          Xuat thong tin ra file            |" << endl;
+		cout << "| 7)          Xuat diem sinh vien               |" << endl;
 		cout << "=================================================" << endl;
 		cout << "Nhap lua chon: ";
 		cin >> choice;
@@ -151,6 +153,16 @@ void List::printMenu()
 				_getch();
 				system("cls");
 				break;
+			case 7:
+				if(size == 0){
+					cout << "\nDanh sach trong!" << endl;
+				}else{
+					this->printScore();
+				}	
+				cout << "\nNhan phim bat ky de tiep tuc" << endl;
+				_getch();
+				system("cls");
+				break;	
 			default:
 				cout << "\nKhong co lua chon nay!" << endl;
 				cout << "\nNhan phim bat ky de tiep tuc!" << endl;
@@ -561,6 +573,7 @@ void List::inputListStudent()
 
 void List::printList()
 {
+	this->printTittle();
 	this->sortByStudentPoint();
 	for (Node *i = head; i != NULL; i = i->next)
 	{
@@ -568,6 +581,33 @@ void List::printList()
 	}
 }
 
+void List::printTittle() {
+	cout<< setw(20) << left << "Ho va ten" << "|" 
+	<< setw(5) << "Tuoi" << "|" 
+	<< setw(10) << "Gioi tinh" << "|" 
+	<< setw(10) << "Ngay sinh" << "|" 
+	<< setw(15) << "MSSV" << "|" 
+	<< setw(10) << "Lop" << "|"
+	<< setw(10) << "Nien khoa" << "|"
+	<< setw(10) << "Que quan" << "|"
+	<< setw(50) << "Dia chi" << "|" << endl;
+	
+}
+
+void List::printScore(){
+	cout<< setw(20) << left << "Ho va ten" << "|" 
+	<< setw(15) << "MSSV" << "|" 
+	<< setw(15) << "Diem KT1" << "|"
+	<< setw(15) << "Diem KT2" << "|"
+	<< setw(15) << "Diem KTCK" << "|"
+	<< setw(15) << "Diem CC" << "|" 
+	<< setw(10) << "Hoc luc" << "|" << endl;
+	for(Node *i = head; i != NULL; i = i->next){
+		cout<< setw(20) << left << i->data.getName() << "|" 
+		<< setw(15) << i->data.getstudentCode() << "|";
+		i->data.getPoint().outputPoint();
+	}
+}
 void List::inputFile() {
 	ifstream infile;
 	infile.open(FILE_PATH);

@@ -1,5 +1,6 @@
 #pragma once
-
+#include<iostream>
+using namespace std;
 class Point{
 	private:
 	float firstExam; 
@@ -9,7 +10,7 @@ class Point{
 	
 	float component;// diem thanh phan
 	float eOtCourse;// dem ket thuc hoc phan
-	
+	string rank;
 	public:
 	void inputPoint();
 	void outputPoint();
