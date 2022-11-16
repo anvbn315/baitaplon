@@ -2,6 +2,7 @@
 #include"Student.h"
 #include<ctime>
 #include"Point.h"
+#include<iomanip>
 
 Point Student::getPoint()
 {
@@ -190,19 +191,16 @@ void Student::input()
 }
 
 void Student::output()
-{
-	cout << "\nTen sinh vien la: " << name << endl;
-	cout << "Tuoi sinh vien la: " << age << endl;
-	cout << "Gioi tinh sinh vien la: " << gender << endl;
-	cout << "Ngay sinh la: ";
+{	
+	cout<< setw(20) << left << name << "|" 
+	<< setw(5) << age << "|" 
+	<< setw(10) << gender << "|";
 	birthDay.dateOutput();
-	cout << "Ma so sinh vien la: " << studentCode << endl;
-	cout << "Lop sinh vien la: " << studentClass << endl;
-	cout << "Nien khoa sinh vien la: " << studentSYear << endl;
-	cout << "Que quan sinh vien la: " << studentTown << endl;
-	cout << "Dia chi sinh vien la: ";
+	cout << setw(15) << studentCode << "|" 
+	<< setw(10) << studentClass << "|"
+	<< setw(10) << studentSYear << "|"
+	<< setw(10) << studentTown << "|" ;	
 	address.addressOutput();
-	point.outputPoint();
 }
 
 void Student::countAge(){

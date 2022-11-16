@@ -1,6 +1,7 @@
 #pragma once
 #include"Date.h"
 #include<iostream>
+#include<iomanip>
 
 using namespace std;
 
@@ -16,7 +17,7 @@ void Date::dateInput()
 
 void Date::dateOutput()
 {
-	cout << day << "/" << month << "/" << year << endl;
+	cout << setw(10) << to_string(day) + "/" + to_string(month) + "/" + to_string(year) << "|" ;
 }
 
 bool Date::compareDate(Date date2){

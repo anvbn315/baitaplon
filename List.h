@@ -21,6 +21,8 @@ class List
 	void addLast(Student data);
 	void inputListStudent();
 	void printList();
+	void printTittle();
+	void printScore();
 	void searchBy(string choice);
 	void printMenu();
 	void deleteByStudentCode(string code); 
