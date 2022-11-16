@@ -279,7 +279,7 @@ void List::searchBy(string choice)
 		cout << "Nhap ten can tim: ";
 		fflush(stdin);
 		gets(tempName);
-
+		this->printTittle();
 		for (Node *i = head; i != NULL; i = i->next)
 		{
 			int n = (i->data.getName()).length();
@@ -287,12 +287,12 @@ void List::searchBy(string choice)
 			strcpy(myarray, i->data.getName().c_str());
 			if (strstr(strupr(myarray), strupr(tempName)) != NULL)
 			{
-				cout << "\n\r";
+	
 				isFound = true;
 				i->data.output();
 			}
 		}
-
+			cout << "=======================================================================================================================================================================" << endl;
 		if (!isFound)
 		{
 			cout << "\nKhong tim thay! " << endl;
@@ -304,17 +304,16 @@ void List::searchBy(string choice)
 		int tempAge;
 		cout << "Nhap tuoi can tim: ";
 		cin >> tempAge;
-
+		this->printTittle();
 		for (Node *i = head; i != NULL; i = i->next)
 		{
 			if (i->data.getAge() == tempAge)
 			{
-				cout << "\n\r";
 				isFound = true;
 				i->data.output();
 			}
 		}
-
+		cout << "=======================================================================================================================================================================" << endl;
 		if (!isFound)
 		{
 			cout << "\nKhong tim thay!" << endl;
@@ -341,17 +340,16 @@ void List::searchBy(string choice)
 					cout << "Khong co lua chon nay!" << endl;
 			}
 		} while (genderNum != 1 && genderNum != 2);
-
+		this->printTittle();
 		for (Node *i = head; i != NULL; i = i->next)
 		{
 			if (i->data.getGender() == tempGender)
 			{
-				cout << "\n\r";
 				isFound = true;
 				i->data.output();
 			}
 		}
-
+		cout << "=======================================================================================================================================================================" << endl;
 		if (!isFound)
 		{
 			cout << "\nKhong tim thay!" << endl;
@@ -364,7 +362,7 @@ void List::searchBy(string choice)
 		cout << "Nhap ma so sinh vien can tim: ";
 		fflush(stdin);
 		gets(tempStudentCode);
-
+		this->printTittle();
 		for (Node *i = head; i != NULL; i = i->next)
 		{
 			int n = (i->data.getstudentCode()).length();
@@ -372,12 +370,11 @@ void List::searchBy(string choice)
 			strcpy(myarray, i->data.getstudentClass().c_str());
 			if (strstr(strupr(myarray), strupr(tempStudentCode)) != NULL)
 			{
-				cout << "\n\r";
 				isFound = true;
 				i->data.output();
 			}
 		}
-
+		cout << "=======================================================================================================================================================================" << endl;
 		if (!isFound)
 		{
 			cout << "\nKhong tim thay!" << endl;
@@ -390,7 +387,7 @@ void List::searchBy(string choice)
 		cout << "Nhap lop can tim: ";
 		fflush(stdin);
 		gets(tempStudentClass);
-
+		this->printTittle();
 		for (Node *i = head; i != NULL; i = i->next)
 		{
 			int n = (i->data.getstudentClass()).length();
@@ -399,11 +396,10 @@ void List::searchBy(string choice)
 			if (strstr(strupr(myarray), strupr(tempStudentClass)) != NULL)
 			{
 				isFound = true;
-				cout << "\n\r";
 				i->data.output();
 			}
 		}
-
+		cout << "=======================================================================================================================================================================" << endl;
 		if (!isFound)
 		{
 			cout << "\nKhong tim thay!" << endl;
@@ -415,16 +411,16 @@ void List::searchBy(string choice)
 		string tempStudentSYear;
 		cout << "Nhap nien khoa can tim: ";
 		cin >> tempStudentSYear;
+		this->printTittle();
 		for (Node *i = head; i != NULL; i = i->next)
 		{
 			if (i->data.getstudentSYear() == tempStudentSYear)
 			{
 				isFound = true;
-				cout << "\n\r";
 				i->data.output();
 			}
 		}
-
+		cout << "=======================================================================================================================================================================" << endl;
 		if (!isFound)
 		{
 			cout << "\nKhong tim thay!" << endl;
@@ -437,7 +433,7 @@ void List::searchBy(string choice)
 		cout << "Nhap que quan can tim: ";
 		fflush(stdin);
 		gets(tempStudentTown);
-
+		this->printTittle();
 		for (Node *i = head; i != NULL; i = i->next)
 		{
 			int n = (i->data.getstudentTown()).length();
@@ -446,11 +442,10 @@ void List::searchBy(string choice)
 			if (strstr(strupr(myarray), strupr(tempStudentTown)) != NULL)
 			{
 				isFound = true;
-				cout << "\n\r";
 				i->data.output();
 			}
 		}
-
+		cout << "=======================================================================================================================================================================" << endl;
 		if (!isFound)
 		{
 			cout << "\nKhong tim thay!" << endl;
@@ -467,17 +462,15 @@ void List::searchBy(string choice)
 				cout << "Ngay khong hop le!" << endl;
 			}
 		}while(tempBirthDay.checkDate() == false);
-		
-	
+		this->printTittle();
 		for (Node *i = head; i != NULL; i = i->next)
 		{
 			if (i->data.getBirthDay().compareDate(tempBirthDay) == true){
 				isFound = true;
-				cout << "\n\r";
 				i->data.output();
 			}	
 		}
-
+		cout << "=======================================================================================================================================================================" << endl;
 		if (!isFound)
 		{
 			cout << "\nKhong tim thay!";
@@ -489,15 +482,15 @@ void List::searchBy(string choice)
 		Address tempAddress;
 		cout << "Nhap dia chi thuong tru can tim: ";
 		tempAddress.addressInput();
+		this->printTittle();
 		for (Node *i = head; i != NULL; i = i->next)
 		{
 			if (i->data.getAddress().compareAddress(tempAddress) == true){
-				cout << "\n\r";
 				isFound = true;
 				i->data.output();
 			}
 		}
-
+		cout << "=======================================================================================================================================================================" << endl;
 		if (!isFound)
 		{
 			cout << "\nKhong tim thay!";
@@ -579,35 +572,41 @@ void List::printList()
 	{
 		i->data.output();
 	}
+	cout << "=======================================================================================================================================================================" << endl;
 }
 
 void List::printTittle() {
-	cout<< setw(20) << left << "Ho va ten" << "|" 
+	cout << "=======================================================================================================================================================================" << endl;
+	cout<< setw(22) << left << "|| Ho va ten" << "|" 
 	<< setw(5) << "Tuoi" << "|" 
 	<< setw(10) << "Gioi tinh" << "|" 
 	<< setw(10) << "Ngay sinh" << "|" 
 	<< setw(15) << "MSSV" << "|" 
-	<< setw(10) << "Lop" << "|"
+	<< setw(15) << "Lop" << "|"
 	<< setw(10) << "Nien khoa" << "|"
-	<< setw(10) << "Que quan" << "|"
-	<< setw(50) << "Dia chi" << "|" << endl;
-	
+	<< setw(15) << "Que quan" << "|"
+	<< setw(55) << "Dia chi" << "||" << endl;
+	cout << "=======================================================================================================================================================================" << endl;
 }
 
 void List::printScore(){
-	cout<< setw(20) << left << "Ho va ten" << "|" 
+	cout << "===================================================================================================================" << endl;
+	cout<< setw(22) << left << "|| Ho va ten" << "|" 
 	<< setw(15) << "MSSV" << "|" 
 	<< setw(15) << "Diem KT1" << "|"
 	<< setw(15) << "Diem KT2" << "|"
 	<< setw(15) << "Diem KTCK" << "|"
 	<< setw(15) << "Diem CC" << "|" 
-	<< setw(10) << "Hoc luc" << "|" << endl;
+	<< setw(10) << "Hoc luc" << "||" << endl;
+	cout << "===================================================================================================================" << endl;
 	for(Node *i = head; i != NULL; i = i->next){
-		cout<< setw(20) << left << i->data.getName() << "|" 
+		cout<< setw(22) << left << "|| "+ i->data.getName() << "|" 
 		<< setw(15) << i->data.getstudentCode() << "|";
 		i->data.getPoint().outputPoint();
 	}
+cout << "===================================================================================================================" << endl;
 }
+
 void List::inputFile() {
 	ifstream infile;
 	infile.open(FILE_PATH);
@@ -639,8 +638,9 @@ void List::inputFile() {
 		infile >> tempStudentCode;
 		infile >> tempStudentClass;
 		infile >> tempStudentSYear;
-		infile >> tempStudentTown;
 		infile.ignore();
+		getline(infile, tempStudentTown);
+
 		getline(infile, tempAddress.homeNum);
 		getline(infile, tempAddress.streetName);
 		getline(infile, tempAddress.ward);

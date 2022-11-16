@@ -74,7 +74,7 @@ void Point::outputPoint(){
 	<< setw(15)  << secondExam << "|"
 	<< setw(15)  << finalExam << "|"
 	<< setw(15)  << attendance << "|" 
-	<< setw(10) << rank << "|" <<  endl;
+	<< setw(10) << rank << "||" <<  endl;
 		
 }
 

@@ -22,7 +22,7 @@ void Address::addressInput()
 
 void Address::addressOutput()
 {
-	cout <<  setw(50) << left << homeNum + ",duong:" + streetName + ",phuong:" + ward + ",quan:" + district + ",TP." + city << "|" <<endl;
+	cout <<  setw(55) << left << homeNum + ",duong:" + streetName + ",phuong:" + ward + ",quan:" + district + ",TP." + city << "||" <<endl;
 }
 
 bool Address::compareAddress(Address address2){

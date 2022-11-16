@@ -192,14 +192,14 @@ void Student::input()
 
 void Student::output()
 {	
-	cout<< setw(20) << left << name << "|" 
+	cout<< setw(22) << left << "|| "+name << "|" 
 	<< setw(5) << age << "|" 
 	<< setw(10) << gender << "|";
 	birthDay.dateOutput();
 	cout << setw(15) << studentCode << "|" 
-	<< setw(10) << studentClass << "|"
+	<< setw(15) << studentClass << "|"
 	<< setw(10) << studentSYear << "|"
-	<< setw(10) << studentTown << "|" ;	
+	<< setw(15) << studentTown << "|" ;	
 	address.addressOutput();
 }
 
